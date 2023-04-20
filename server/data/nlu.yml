@@ -182,17 +182,26 @@ nlu:
 
 - intent: weather
   examples: |
+    - [오늘](forecast_period) [날씨](wx_type)
     - [오늘](forecast_period) [날씨](wx_type) 알려줘
     - [오늘](forecast_period) [날씨](wx_type)가 어때?
     - [오늘](forecast_period) [온도](wx_type)는 몇 도야?
     - [오늘](forecast_period) [온도](wx_type)가 어때?
     - [오늘](forecast_period) [바람](wx_type)이 많이 불어?
+    - [오늘](forecast_period) [비](wx_type)가 와?
     - [오늘](forecast_period) [비](wx_type)가 올까?
     - [내일](forecast_period) [날씨](wx_type) 어때?
-    - [토요일](forecast_period) 축구 경기할 때 [날씨](wx_type) 어때?
+    - [내일](forecast_period) 축구 경기할 때 [날씨](wx_type) 어때?
     - [날씨](wx_type) 알려줘
     - [날씨](wx_type) 정보 좀 알려줘
+    - [오늘](forecast_period) [날씨](wx_type)좀
 
 - intent: city_weather
   examples: |
-    - [오늘](forecast_period) [서울](city) 날씨 알려줘
+    - [서울특별시 종로구 평창동](city) [날씨](wx_type)
+    - [오늘](forecast_period) [서울](city) [날씨](wx_type) 알려줘
+    - [오늘](forecast_period) [대구](city) [날씨](wx_type) 어때?
+    - [오늘](forecast_period) [대구 북구](city) [온도](wx_type)가 몇 도야?
+    - [내일](forecast_period) [부산](city)에 [비](wx_type)가 와?
+    - [내일](forecast_period) [부산](city)에 [비](wx_type)가 올까?
+    - [내일](forecast_period) [경기도](city) [날씨](wx_type)좀
