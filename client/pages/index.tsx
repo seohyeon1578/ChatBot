@@ -1,5 +1,7 @@
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import React, { useEffect } from "react";
+import { useQuery } from "react-query";
+import { fetchMessage } from "@/api/fetchMessate";
 
 export default function Home() {
   const {
@@ -7,6 +9,11 @@ export default function Home() {
     listening,
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
+  const { data, status } = useQuery(["fetchMessage", !listening],
+    () => fetchMessage(transcript), {
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => console.log(data)
+  })
 
   const startListening = () => SpeechRecognition.startListening({ language: 'ko-KR' })
   const stopListening = () => SpeechRecognition.stopListening();
@@ -22,6 +29,9 @@ export default function Home() {
     <>
       <button onClick={listening ? stopListening : startListening}>클릭</button>
       {transcript}
+      <div>
+        chatbot: {data && data[0]?.text}
+      </div>
     </>
   );
 }

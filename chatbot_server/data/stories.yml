@@ -1,0 +1,50 @@
+version: "3.1"
+
+stories:
+- story: story_greet
+  steps:
+  - intent: hello
+  - action: utter_greet
+
+- story: story_goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: story_wx
+  steps:
+  - intent: weather
+  - action: action_wx
+
+- story: story_sc
+  steps:
+  - intent: schedule
+  - action: action_get_schedule
+
+- story: story_sc_add
+  steps:
+  - intent: schedule_add
+  - action: utter_ask_schedule_add
+  - intent: affirmation
+  - action: action_add_schedule
+
+- story: story_sc_add_deny
+  steps:
+  - intent: schedule_add
+  - action: utter_ask_schedule_add
+  - intent: deny
+  - action: utter_confirm_deny
+
+- story: story_sc_remove
+  steps:
+  - intent: schedule_remove
+  - action: utter_ask_schedule_remove
+  - intent: affirmation
+  - action: action_remove_schedule
+
+- story: story_sc_remove_deny
+  steps:
+  - intent: schedule_remove
+  - action: utter_ask_schedule_remove
+  - intent: deny
+  - action: utter_confirm_deny

@@ -1,0 +1,90 @@
+version: "3.1"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+intents:
+  - affirmation
+  - deny
+  - hello
+  - wait
+  - well
+  - goodbye
+  - weather
+  - city_weather
+  - schedule_add
+  - schedule
+  - schedule_remove
+
+entities:
+  - wx_type
+  - forecast_period
+  - city
+  - date
+  - time
+  - title
+
+slots:
+  forecast_period:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: forecast_period
+  wx_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: wx_type
+  city:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: city
+  date:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: date
+  time:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: time
+  title:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: title
+
+actions:
+  - action_wx
+  - action_add_schedule
+  - action_remove_schedule
+  - action_get_schedule
+  - action_confirm_schedule
+
+responses:
+  utter_greet:
+  - text: "안녕하세요."
+
+  utter_goodbye:
+  - text: "다음에 또 얘기해요~!"
+
+  utter_ask_schedule_add:
+  - text: "일정 {title}을(를) 등록하시겠습니까?"
+
+  utter_ask_schedule_remove:
+  - text: "일정 {title}을(를) 취소하시겠습니까?"
+
+  utter_confirm_deny:
+  - text: "알겠습니다. 다른 예약을 도와드릴까요?"
+
+  utter_fallback:
+  - text: "무슨 뜻인지 모르겠어요...ㅠㅠ"
