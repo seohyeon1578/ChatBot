@@ -2,6 +2,8 @@ import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognitio
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { fetchMessage } from "@/api/fetchMessate";
+import * as styles from "@/styles/app.css";
+import Image from 'next/image';
 
 export default function Home() {
   const {
@@ -26,12 +28,48 @@ export default function Home() {
   }, [browserSupportsSpeechRecognition])
 
   return (
-    <>
-      <button onClick={listening ? stopListening : startListening}>클릭</button>
-      {transcript}
-      <div>
-        chatbot: {data && data[0]?.text}
+    <div className={styles.themeClass}>
+      <div className={styles.root}>
+          <div className={styles.robot}>
+            <Image
+              src="/robot.png" 
+              width={486}
+              height={514}
+              alt="robot"
+            />
+            {data &&
+              <div className={styles.answer}>
+                <span className={styles.answerText}>{data[0]?.text}</span>
+              </div>
+            }
+          </div>
+          <div className={styles.footer}>
+          {
+            listening
+            ?
+            <div className={styles.responseContainer}>
+              <span className={styles.text}>{transcript}</span>
+              <div className={styles.circleContainer}>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+                <div className={styles.circle}></div>
+              </div>
+            </div>
+            :
+            <button
+              className={styles.mickButton}
+              onClick={startListening}
+            >
+              <Image
+                src="/mike.png"
+                width={36}
+                height={48}
+                alt="mick"
+              />
+            </button>
+          } 
+          </div>
       </div>
-    </>
+    </div>
   );
 }
